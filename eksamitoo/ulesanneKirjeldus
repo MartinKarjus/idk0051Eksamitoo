@@ -1,0 +1,101 @@
+Põhiosa (max 13 punkti, max aine hinne 4)
+1. Looge linnatänavate võrgustik, kus iga tänav on seotud mõne teise tänavaga. Soovitav (aga mitte
+kohustuslik) on see lahendada graafina, kus servad on tänavad ja tipud on ristmikud. Üks lihtne
+graafi näidislahendus on siin: https://gist.github.com/smddzcy/bf8fc17dedf4d40b0a873fc44f855a58
+Võite soovi korral seda kasutada (sel juhul viidake koodi kommetaariga sellele) või realiseerida
+enda oma.
+Valige realiseerimiseks mõni Eesti linn omal valikul või mõelge ise välja, ei pea vastama
+tegelikkusele. Linnas peab olema vähemalt 20 tänavat. Lihtsustus: kõik ristmikud võivad olla
+tänava otsas. Näide:
+Akadeemia tee algab
+Ehitajate tee ja Sõpruse
+puistee ristmikul ja lõppeb
+Järveotsa teega ristudes.
+Vahepeal aga ristub ka
+Kadaka tee ja Raja tänavaga.
+Võite lihtsustada ja kujutada,
+et Akadeemia tee ühest otsast
+saab liikuda Ehitajate teele,
+Sõpruse puisteele ja Raja
+tänavale ning teisest otsast
+Järveotsa teele ja Kadaka
+teele.
+2. Määrake 4 ristmikku, mille kaudu autod linna võivad siseneda. Neil ristmikel loendatakse kõik
+sisenevad autod.
+3. Määrake 4 ristmikku, kus asuvad autoteenindused.
+4. Linnas on keskne keskkonnahoiu andmekeskus, mis töötleb ja salvestab liiklusandmeid. Selle
+funktsionaalsus on kirjeldatud ülesandes läbivalt muude punktide all.
+5. Iga auto:
+• sõidab linnas ringi juhuslikult navigeerides. St igal ristmikul auto otsustab suvaliselt
+võimalike variantide hulgast, kuhu keerata. Nt jõudes Akadeemia tee – Ehitajate tee ristile,
+on võimalik (lihtsustatud graafi korral) jätkata sõitu Ehitajate teele, Raja tänavale või
+Sõpruse puisteele.
+• Iga tänava läbimiseks kulub 3-20 ms
+• Iga 5 tänava läbimise järel saadab vastava info keskkonnahoiu andmekeskusesse, lisades ka
+oma mootori tüübi
+• Iga 7 tänava läbimise järel küsib auto keskkonnahoiu andmekeskusest, kas sõitmine on tema
+mootoritüübiga autodele lubatud
+◦ kui ei ole, siis jääb ootele kuniks uuesti luba antakse
+◦ kui võib jälle liigelda, siis teavitab keskkonnahoiu andmekeskus sellest kõiki ootavaid
+autosid ise
+Raja
+6. Programmi töö alguses ei ole linnas ühtegi autot. Autod alustavad sõitu eelpool nimetatud nelja
+punkti kaudu, mis ühtlasi registreerib iga siseneva auto mootori tüübi ja saadab andmed
+keskkonnainfo andmekeskusesse.
+• Looge vähemalt 200 erineva mootoriga autot, mis linnas sõidaksid – kui teie arvuti
+kannatab, looge veel rohkem :)
+• 10% neist on alguses keskkonnasäästliku mootoriga
+7. Linna õhusaastet arvutatakse järgmiselt:
+• iga diiselmootoriga auto läbitud tänav – 3 ühikut
+• iga bensiinimootoriga auto läbitud tänav – 2 ühikut
+• iga limonaadimootoriga auto läbitud tänav – 0.5 ühikut.
+• iga elektrimootoriga auto läbitud tänav – 0.1 ühikut.
+8. Keskonnahoiu andmekeskus peab arvestust linnas liikuvate autode üle ja arvutab, kas õhupuhtust
+arvestades tohivad autod sõita.
+• kõikidele autodele on sõitmine lubatud kui õhusaaste linnas on vähem kui 400 ühikut
+• kui õhusaaste on suurem kui 400 ühikut, keelatakse diiselmootoriga autode sõitmine
+• kui õhusaaste on suurem kui 500 ühikut, keelatakse bensiinimootoriga autode liiklemine
+• elektri- ja limonaadimootoriga autode liiklemist ei keelata, kuna nende õhusaaste on
+marginaalne
+9. Peale seda, kui keskkonnahoiukeskus on rakendanud sõidukeelu, algväärtustatakse 2 sekundi
+pärast õhusaaste hulk:
+• Kui linnas on vähem kui 70 sisepõlemismootoriga (internal combustion engine) autot, siis
+nullitakse
+• kui linnas on 70 sisepõlemismootoriga autot või rohkem, siis 40% sõidukeelu rakendamise
+hetkel kehtinust
+10. Kui auto satub ristmikule, kus on autoteenindus, läheb ta teenindusse. Teenindus võiks aega
+võtta vähemalt 50ms. Teeninda saab ühte autot korraga, teised ootavad. Logige teenindamise fakt
+faili või konsooli.
+11. Teenindusel on meetod pärimaks infot teenindatud autode kohta. Meetod peab aktsepteerima
+sisendina mõne funktsionaalse liidese realisatsiooni, et saaks kasutada nt lambda või meetodi
+viitega.
+
+
+
+
+Täiendav osa (vabatahtlik, eeldus hinde 5 saamiseks, max 7 punkti)
+12. Kui auto on pidanud vähemalt 2 korda peatuma liigse õhusaaste tõttu, siis otsustab ta
+tõenäosusega 1:6 vastu vahetada oma mootor inimsõbralikuma elektri- või limonaadimootori vastu
+ning järgmine kord teenindusjaama sattudes vahetab autol mootori.
+• Mootori vahetusest tuleb teavitada ka keskkonnahoiu keskust, et tal oleks täpne statistika
+linnas sõitvate autode kohta
+13. Valige kaks tänavat linnas, kus on väga halvad teeolud ja mis lõhuvad auto rehve. Kui auto on
+sellist tänavat 3 korda läbinud, siis ta ei ole suuteline rohkem sõitma, vaid peatub järgmisel
+ristmikul ning teavitab keskkonnahoiu keskust, et ta takistab liiklust.
+• Keskkonnahoiukeskus saadab välja spetsiaalse autoabi auto, mis sõidab linnas ringi ilma
+kõikide muude piiranguteta ja otsib katkiste rehvidega autot (sõidab juhuslikult, autoabi auto
+ei tohi tekkida kohe õigele ristmikule)
+• Kui linnas või ristmikul on mitu katkiste rehvidega autot, võib teenindada esimest
+ettejuhtuvat
+• Autoabi auto vahetab abi vajava auto rehvid. Kui katkise rehviga auto on limonaadi- või
+elektrimootoriga, siis paigaldatakse talle kõik uued eriti pehmest marmelaadist rehvid. Need
+ei purune halva teekattega tänavatel ja edaspidi auto rehvid katki ei lähe.
+14. Realiseerige keskkonnahoiu keskuses meetod, mis tagastab ülevaate liiklusolukorrast linnas.
+See meetod peaks olema parametriseeritav vaatemooduliga (view). Näide: kui kasutaja soovib, saab
+ta vastava info JSON kujul, kui soovib, siis vabatekstina. Kusjuures meetod ise nt JSON-i
+konverteerida ei oska, seda teeb view või strateegia (valige ise sobiv viis).
+15. Linnas elab üks lind, kes armastab laulda. Iga 4 sekundi tagant:
+• kui õhusaaste hulk on vähem kui 400 ühikut, laulab konsooli „Puhas õhk on puhas õhk on
+rõõmus linnu elu!”
+• kui õhusaaste hulk on suurem siis laulab konsooli „Inimene tark, inimene tark – saastet täis
+on linnapark” :)
